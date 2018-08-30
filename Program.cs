@@ -20,15 +20,17 @@ namespace UECP_Decoder
         //public byte[] UECPFrame = new byte[19];
         //public byte[] UECPFrame = new byte[263];
 
-        public void Decode (byte[] data)
+
+        public void Decode ()
         {
+            UECP_Parser uecp = new UECP_Parser();
             //Now lets start parsing our Message Field
 
             //Now lets start parsing our Message Field
 
-
+            //uecp.ParseMessage();
             //Console.WriteLine(Tools.ByteArrayToString(UECPFrame));
-            Console.WriteLine("Break Here");
+            //Console.WriteLine("Break Here");
 
         } 
     }
@@ -37,6 +39,7 @@ namespace UECP_Decoder
         static void Main(string[] args)
         {
             UECP_Parser uecp = new UECP_Parser();
+            UECP play = new UECP();
             TcpListener server = new TcpListener(IPAddress.Any, 4002);
             // we set our IP address as server's address, and we also set the port: 9999
 
@@ -60,6 +63,7 @@ namespace UECP_Decoder
                     //ns.Read(uecp.UECPFrame, 0, 19);
                     ns.Read(uecp.UECPFrame, 0, uecp.UECPFrame.Length);
                     uecp.ParseFrame(uecp.UECPFrame);
+                    //play.Decode();
                     //Console.WriteLine(Encoding.Default.GetString(uecp.UECPFrame).Trim());
                     //Array.Copy(msg, uecp.UECPFrame, 255);
                     //Console.WriteLine("Break Here");

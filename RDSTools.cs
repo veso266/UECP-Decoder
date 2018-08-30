@@ -65,5 +65,9 @@ namespace UECP_Decoder
             }
             return false;
         }
+        public static string FormatMEC(string MEC)
+        {
+            return MEC.Replace("RDS_", "");
+        }
     }
 }
